@@ -1,4 +1,4 @@
-use std::{fmt::Debug, io, str::FromStr};
+use std::{fmt::Debug, io, io::Write, str::FromStr};
 
 // Gets input from the user
 // Similar to Python's `input` function
@@ -7,7 +7,8 @@ where
     T: FromStr,
     T::Err: Debug,
 {
-    println!("{}", question);
+    print!("{}", question);
+    io::stdout().flush().expect("Failed to flush stdout!");
 
     let mut answer = String::new();
     io::stdin()
